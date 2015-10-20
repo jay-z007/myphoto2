@@ -1,0 +1,83 @@
+<!doctype html>
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
+
+<head>
+	<title>Photo detail</title>
+	
+	{%load staticfiles %}
+    
+    <!-- Favicon --> 
+	<link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+   <!--	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+-->    <link rel="stylesheet" href="{% static 'photo/reset.css'%}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'photo/css_login/style.css'%}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css'%}">
+    
+    <!-- responsive devices styles -->
+	<link rel="stylesheet" media="screen" href="{% static 'photo/responsive-leyouts.css'%}" type="text/css" />
+</head>
+
+<body>
+
+
+<div class="site_wrapper">
+
+<div class="clearfix"></div>
+
+<div class="container">
+
+	<div class="content_fullwidth">
+    
+		<div class="portfolio_area">
+        	
+            <div class="portfolio_area_left"><a href="#"><img src="{{photo.image.url}}"/></a></div>
+            
+            <div class="portfolio_area_right">
+            
+            	<h4>{{ photo.title }}</h4>
+                	<ul class="small_social_links">
+                    	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
+                
+                <div class="project_details">
+					<span><strong>Date</strong> <em>{{ photo.created }}</em></span>
+                    <span><strong>Albums</strong> 
+                        <em>
+                            {% for album in albums %}
+                                <a href="#">{{album.album_name}}</a> 
+                            {% endfor %}
+                        </em>
+                    </span>
+                    <span><strong>Tags</strong> 
+                        <em>
+                            {% for tags in all_tags %}
+                                <a href="#">{{tags.tag}}</a> 
+                            {% endfor %}
+                        </em>
+                    </span>
+
+                    <span><strong>Uploaded by</strong> <em>{{photo.user.get_full_name}}</em></span>
+                    <div class="clearfix margin_top5"></div>
+                    <a href="{% url 'index' %}" class="but_goback"><i class="fa fa-hand-o-right fa-lg"></i> All photos</a>
+                </div>  
+                
+            </div>
+          
+		</div><!-- end section -->
+
+	</div>
+
+</div><!-- end content area -->
+
+</body>
+</html>

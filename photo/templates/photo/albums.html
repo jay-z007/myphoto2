@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>Phileikones</title>
+    {% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/style.css' %}" />
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css/menu-style.css' %}">
+</head>
+
+<body>
+    {% block content %}
+    <div class="main">
+
+        <div id ="nav" class="blurred-bg tinted">
+            <div class="content">
+                <div class = "container">
+                    <ul class="menu menu-main">
+                            <li>
+                                <span class="menu-icon"><img src="{% static 'photo/img/menu-icon.png' %}"></span>
+                                <nav class="wrapper">
+                                    <div class="menu-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="{% url 'index' %}">All Photos</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'albums' %}">Albums View</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'create_album' %}">Create Album</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'upload_form' %}">Upload Photo</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'user_update' %}">Edit User</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'abt' %}">About</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'dev' %}">Developers</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'logout' %}">Logout</a>
+                                            </li>
+                                        </ul>   
+                                    </div>
+                                </nav>
+                            </li>
+                    </ul>
+                </div>
+                <h1>PHILEIKONES</h1>
+            </div>
+
+        </div>
+
+         <div id="box1" class="box blurred-bg tinted">
+            <div class="content">
+                <h1>Albums</h1>
+                {% for album in albums.object_list %}
+                    <a href="{% url 'album_details' album.id %}" >
+                        <div class="title"><p>{{ album.album_name }} ({{ album.photo_set.count }} images)</p>
+                        </div>
+                    </a>
+                    <a href="{{ media_url }}{{ album.cover_photo.name }}"><img class="myimg blurred-bg" border="0" alt=""
+                                src="{{ album.cover_photo.url }}"/></a>
+                
+                {% endfor %}
+            </div>
+         </div>
+        <!-- Next/Prev page links  -->
+       {% if albums.object_list and albums.paginator.num_pages > 1 %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if albums.has_previous %}
+                    <a href= "?page={{ albums.previous_page_number }}">previous &lt;&lt; </a>
+                {% endif %}
+
+                <span class="current">
+                    &nbsp;Page {{ albums.number }} of {{ albums.paginator.num_pages }}
+                </span>
+
+                {% if albums.has_next %}
+                    <a href="?page={{ albums.next_page_number }}"> &gt;&gt; next</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+
+    </div>
+
+    {% endblock %}
+    <script type="text/javascript" src="{% static 'photo/js/menu-style.js' %}"></script>
+    
+    <script type="text/javascript">
+        var _nav_top = $("#nav").scrollTop();
+        var _top = $(window).scrollTop();
+        var _direction;
+        $(window).scroll(function(){
+            var _cur_top = $(window).scrollTop();
+            if(_top < _cur_top)
+            {
+                //down
+                _nav_top = _nav_top -1;
+                $("#nav").scrollTop(_nav_top);
+            }
+            else
+            {
+                //up
+            }
+            _top = _cur_top;
+            
+        });
+    </script>
+</body>
+</html>

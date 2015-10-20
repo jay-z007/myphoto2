@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<title>Photo Booth Strips with Lightbox</title>
+	{% load staticfiles %}
+
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'photo/css/demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'photo/css/lightbox.css' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'photo/css/style.css' %}" />
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="{% static 'photo/js/modernizr.custom.52731.js' %}"></script> 
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    	<style type="text/css">
+    		.pb-strip img{
+    			width: 100%;
+    			height: auto;
+    		}
+    		#back{
+            position: fixed;
+            left: 1.5%;
+            top: 30%;
+        	
+
+        }
+    	</style>
+    </head>
+    <body>
+        <div class="container">
+			<a id="back"  class="pure-button" href="{% url 'albums' %}"><b>Back</b></a>
+			<header>
+			
+				<h1>Photo Booth Strips</h1>
+				<h2><strong>Scroll with your mousewheel or finger</strong></h2>
+				</div>
+				
+			</header>
+			
+			<section id="main" class="main">
+				{% for album in albums %}
+				{{ album }}
+					{% if forloop.counter0 == 0 %}
+					<div class="pb-wrapper pb-wrapper-1">
+						<div class="pb-scroll">
+							<ul class="pb-strip">
+								{% for img in album.images %}
+									<li><a href="{{ img.image.url }}" rel="lightbox[album1]" title="{{img.title}}"><img src="{{ img.image.url }}" /></a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<h3 class="pb-title">{{ album.description }}</h3>
+					</div>
+					{% endif %}
+
+					{% if forloop.counter0 == 1 %}
+					<div class="pb-wrapper pb-wrapper-2">
+						<div class="pb-scroll">
+							<ul class="pb-strip">
+								{% for img in album.images %}
+									<li><a href="{{ img.image.url }}" rel="lightbox[album2]" title="{{img.title}}"><img src="{{ img.image.url }}" /></a></li>
+								{% endfor %}
+							</ul>
+						</div>	
+						<h3 class="pb-title">{{ album.description }}</h3>
+					</div>
+					{% endif %}
+
+					{% if forloop.counter0 == 2 %}
+					<div class="pb-wrapper pb-wrapper-3">
+						<div class="pb-scroll">
+							<ul class="pb-strip">
+								{% for img in album.images %}
+									<li><a href="{{ img.image.url }}" rel="lightbox[album3]" title="{{img.title}}"><img src="{{ img.image.url }}" /></a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<h3 class="pb-title">{{ album.description }}</h3>
+					</div>
+					{% endif %}
+
+					{% if forloop.counter0 == 3 %}
+					<div class="pb-wrapper pb-wrapper-4">
+						<div class="pb-scroll">
+							<ul class="pb-strip">
+								{% for img in album.images %}
+									<li><a href="{{ img.image.url }}" rel="lightbox[album1]" title="{{img.title}}"><img src="{{ img.image.url }}" /></a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<h3 class="pb-title">{{ album.description }}</h3>
+					</div>
+					{% endif %}
+				{% endfor %}
+			</section>
+        </div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="{% static 'photo/js/lightbox.js' %}"></script>
+    </body>
+</html>

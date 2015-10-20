@@ -1,0 +1,143 @@
+<html>
+<head>
+	<title>Album Details</title>
+	{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/style.css' %}" />
+    <script src="{% static 'photo/js/universal/jquery-1.11.3.min.js' %}"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/slick/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/slick/slick-theme.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/css/menu-style.css' %}">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<style type="text/css">
+	<style>
+        .slider{
+        	width: 80%;
+        	left: 10%;
+        }
+        .content1{
+            width: 80%;
+            height: auto;
+            margin: 10px;
+        }
+        .content1 img{
+        	width: 100%;
+        	height: auto;
+        }
+        .main{
+        	width: 100%;
+        	height: 70%;
+        }
+        .main img {
+        	width: auto;
+        	height: 100%;
+            margin: 20px;
+        }
+        .slideshow{
+            width: 80%;
+            left: 10%;
+        }
+        .slider
+        {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body >
+
+    <div class="container">
+		
+                    <ul class="menu menu-main">
+                            <li>
+                                <span class="menu-icon"><img src="{% static 'photo/img/menu-icon.png' %}"></span>
+                                <nav class="wrapper">
+                                    <div class="menu-content">
+                                        <ul class="menu">
+                                            <li class="menu-item">
+                                                <a href="{% url 'index' %}">All Photos</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'albums' %}">Albums View</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'create_album' %}">Create Album</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'upload_form' %}">Upload Photo</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'user_update' %}">Edit User</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'abt' %}">About</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'dev' %}">Developers</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{% url 'logout' %}">Logout</a>
+                                            </li>
+                                        </ul>   
+                                    </div>
+                                </nav>
+                            </li>
+                    </ul>
+                </div>
+        <a href ="{% url 'slide' id %}" class="pure-button" style="position:absolute;right:20px;top:20px;">Slide Show</a>       
+		<div class="slideshow" align="center">
+			{% for photo in photo_list %}
+				<div class="main"><img class="slides" src="{{ photo.image.url }}"></div>
+			{% endfor %}
+		</div>
+		<div class="slider">
+			{% for photo in photo_list %}
+				<div class="content1"><img class="slides" src="{{ photo.image.url }}"></div>
+			{% endfor %}
+		</div>
+	
+{% if count == 0 %}
+    <div id ="nav" class="blurred-bg tinted" style="top:30%;">
+        <div class="content">
+            <h1><p>{{ title }} ({{ count }} images)</p></h1>
+            <p>No Photos Yet..!!</p>
+            <a href="{% url 'upload_form' %}" >
+                <div class="title"><p>Click Here to add Some</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endif %}
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="{% static 'photo/slick/slick.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'photo/js/menu-style.js' %}"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$('.slideshow').slick({
+    			dots: false,
+				infinite: true,
+				speed: 1000,
+				arrows:false,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+	  			asNavFor: '.slider',
+	  		});
+	  		$('.slider').slick({
+	  			asNavFor: '.slideshow',
+	  			slidesToShow: 3,
+	  			slidesToScroll: 1,
+	  			arrows:true,
+	  			centerMode:true,
+	  			adaptiveHeight:true,
+	  			focusOnSelect: true,
+	  		});
+		});
+
+	</script>
+
+</body>
+</html>

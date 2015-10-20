@@ -1,0 +1,115 @@
+﻿<!doctype html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'photo/css_login/reset.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'photo/css_login/style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    
+  	<link rel="stylesheet" href="{% static 'photo/js/progressbar/ui.progress-bar.css' %}">
+    <style type="text/css">
+        #back{
+            position: fixed;
+            left: 2%;
+            top: 4%;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+<div class="clearfix margin_top2"></div>
+<div id="back">
+    <a class="pure-button"  href="{% url 'index' %}" >Back</a>
+</div>
+<div class="content_fullwidth">
+<div class="container">
+	<br />
+    <div class="one_half"><img src="{% static 'photo/img/bg.jpg' %}" alt="" class="img_size1" /></div><!-- end section -->
+    
+    <div class="one_half last">
+		
+        <h3>We Build Smarter Stuff on Phileikones!</h3>
+        
+        <p>There will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy versions have over the years on purpose.</p>
+        
+        <div class="clearfix margin_top5"></div>
+        
+        <div class="one_third circlefus">
+        	
+            <i class="fa fa-recycle"></i>
+            <br />
+            <h6>Neat &amp; Flexible</h6>
+            
+        </div><!-- end section -->
+        
+        <div class="one_third circlefus">
+        	
+            <i class="fa fa-cog"></i>
+            <br />
+            <h6>Tons of Features</h6>
+            
+        </div><!-- end section -->
+        
+        <div class="one_third last circlefus">
+        	
+            <i class="fa fa-thumbs-up"></i>
+            <br />
+            <h6>Easy to use</h6>
+            
+        </div><!-- end section -->
+        
+	</div><!-- end section -->
+    
+        
+	<div class="clearfix divider_dashed2"></div><!-- end divider line -->
+
+    
+    <div class="one_half">
+    
+    	<h3>Who <strong>We Are</strong></h3>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula.</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.</p>
+    	
+    </div><!-- end section -->
+    
+    <div class="one_half last">
+    	
+        <div class="pro_bar inner">
+    	
+            <h5 class="nocaps">Website Design</h5>
+            <div id="progress_bar" class="ui-progress-bar ui-container">
+            <div class="ui-progress"><span class="ui-label"><b class="value">90%</b></span></div>
+            </div><!-- end section -->
+            
+            <br />
+            
+            <h5 class="nocaps">Graphic Design</h5>
+            <div id="progress_bar2" class="ui-progress-bar ui-container">
+            <div class="ui-progress two"><span class="ui-label"><b class="value">72%</b></span></div>
+            </div><!-- end section -->
+            
+            <br />
+            
+            <h5 class="nocaps">Javascript</h5>
+            <div id="progress_bar3" class="ui-progress-bar ui-container">
+            <div class="ui-progress three"><span class="ui-label"><b class="value">80%</b></span></div>
+            </div><!-- end section -->
+            
+            <br />
+            
+            <h5 class="nocaps">Development</h5>
+            <div id="progress_bar4" class="ui-progress-bar ui-container">
+            <div class="ui-progress four"><span class="ui-label"><b class="value">94%</b></span></div>
+            </div><!-- end section -->
+        
+		</div>
+        
+    </div><!-- end section -->
+    <div class="clearfix divider_dashed2"></div>
+    <div class="clearfix divider_dashed2"></div>
+</body>
+</html>

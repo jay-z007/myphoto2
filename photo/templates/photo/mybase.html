@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Phileikones</title>
+    {% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/style.css' %}" />
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    {% block linkfiles %}{% endblock%}
+    {% block style %}{% endblock %}
+</head>
+<body>
+	<div class="main">
+        <div id ="nav" class="blurred-bg tinted">
+            <div class="content">
+                <h1>{% block title %}{% endblock %}</h1>
+            </div>
+        </div>
+         <div id="box1" class="box blurred-bg tinted">
+            <div class="content">
+	{% block content %}
+	{% endblock %}
+	{% block js %}{% endblock %}
+</body>
+</html>

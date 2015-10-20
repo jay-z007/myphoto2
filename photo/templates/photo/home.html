@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Photography Website Concept</title>
+	<meta name="description" content="A photography-inspired website layout with an expanding stack slider and a background image tilt effect" />
+	<meta name="keywords" content="photography, template, layout, effect, expand, image stack, animation, flickity, tilt" />
+	<meta name="author" content="Codrops" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	{% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css/flickity.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css/main.css' %}" />
+   	<link rel="shortcut icon" href="{% static 'photo/favicon.ico' %}">
+   	<style type="text/css">
+   		footer{
+   			position: fixed;
+   			top: 95%;
+   			left: 5%;
+   		}
+   	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="hero">
+			<div class="hero__back hero__back--static"></div>
+			<div class="hero__back hero__back--mover"></div>
+			<div class="hero__front"></div>
+		</div>
+
+		<header class="codrops-header">
+			<h1 class="codrops-title">Phileikones <span>For Photo Lovers</span></h1>
+			<nav class="menu">
+				<a class="menu__item" href="{% url 'abt' %}"><span>About</span></a>
+				<a class="menu__item" href="{% url 'dev' %}"><span>Developers</span></a>
+				<a class="menu__item" href="{% url 'login' %}"><span>Login</span></a>
+				<a class="menu__item" href="{% url 'register' %}"><span>Register</span></a>
+			</nav>
+		</header>
+		<!-- /stacks -->
+		<footer>
+
+			<div class="container">
+				    
+			    <div class="one_half">
+				    
+				        Copyright © 2015 Phileikones.com  All rights reserved.  <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+				        
+				</div>
+				    
+					<div class="one_half last">
+				        
+				      <!--   <ul class="footer_social_links three">
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="200"><a href="#"><i class="fa fa-facebook"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="250"><a href="#"><i class="fa fa-twitter"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="300"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="350"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="450"><a href="#"><i class="fa fa-flickr"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="500"><a href="#"><i class="fa fa-html5"></i></a></li>
+				            <li class="animate" data-anim-type="zoomIn" data-anim-delay="550"><a href="#"><i class="fa fa-youtube"></i></a></li>
+				        </ul> -->
+				            
+				    </div>
+				    
+				</div>
+		</div><!-- end copyright info -->
+
+	</footer>
+</div>
+
+	<!-- /container -->
+	<script type="text/javascript" src="{% static 'photo/js/modernizr.custom.js' %}"></script>
+   	<script type="text/javascript" src="{% static 'photo/js/flickity.pkgd.min.js' %}"></script>
+   	<script type="text/javascript" src="{% static 'photo/js/main.js' %}"></script>
+</body>
+</html>

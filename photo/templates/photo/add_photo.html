@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    {%load staticfiles%}
+    <meta charset="UTF-8">
+    <title>Add Photo to Album</title>
+	<link rel="stylesheet" type="text/css" href="{%static 'photo/css/dropzone.css'%}">
+	<link rel="stylesheet" type="text/javascript" href="{%static 'photo/js/dropzone.js'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/form_style.css' %}" />
+	<link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css' %}">
+	<style type="text/css">
+		#upload_image
+		{
+			height: 100%;
+			width: 100%;
+		}
+		#blah{
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+<div class="reg_form">
+<form name= "upload" id="sky-form" class="sky-form" method="post" action="/photo/upload/" enctype="multipart/form-data">
+	{% csrf_token %}
+				<header>Add a new Memory</header>
+
+				<fieldset>
+
+					<section>
+						<label class="input">
+							<i class="icon-append icon-envelope-alt"></i>
+							<input type="text" name="title" placeholder="Title">
+							<b class="tooltip tooltip-bottom-right">Tell us more about this Memory</b>
+						</label>
+					</section>
+
+					<section>
+						<a href="#" onclick="openFileOption();return;"><img id="blah" width="200px" height ="auto" src="{% static 'photo/img/upload.jpg' %}">
+						<input type="file" id="file1" name="image" style="display:none;" onchange="readURL(this);"/>
+					</br>
+						<label>
+							Click here to choose files
+						</label>
+						</a>
+					</section>
+				
+				</fieldset>
+
+				<fieldset>
+					<div class="row">
+						<section class="col col-6">
+							<label class="select multiple_select">
+								<b>Tags :</b>
+								</br> 
+								<select name = "Tags" multiple>
+									{%for tag in all_tags %}
+										<option value="{{tag.tag}}"> {{tag.tag}}</option>
+									{%endfor%}
+								</select>
+							</label>
+						</section>
+						<section class="col col-6">
+							<label class="select multiple_select">
+								<b>Albums :</b>
+								</br>
+								<select name = "Albums" multiple>
+									{%for album in all_albums%}
+										<option value="{{album.album_name}}"> {{album.album_name}}</option>
+									{%endfor%}
+								</select>
+							</label>
+						</section>
+					</div>
+				</fieldset>
+				<footer>
+
+					<div class="fright">
+					<input type="submit" value="Upload" name="submit" class="button">
+					</div>
+					<a href="{% url 'albums' %}" class="button button-secondary">Cancel</a>
+                    
+				</footer>
+			</form>
+</div>
+	<script type="text/javascript" src="{% static 'photo/js/universal/jquery-1.11.3.min.js' %}"></script>
+<!-- 
+	 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+ --><!--<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+<script>
+	$("#uploadTrigger").click(function(){
+   		$("#uploadFile").click();
+	});
+
+	function openFileOption()
+	{
+		document.getElementById('file1').click();
+	}
+
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150);
+
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+</body>
+</html>

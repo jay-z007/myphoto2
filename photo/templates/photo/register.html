@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
+
+<head>
+	<title>Phileikones Register</title>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    
+    <!-- Favicon --> 
+	<link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    
+ 	{% load staticfiles%}    
+    <link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/form_style.css' %}" />
+
+</head>
+
+<body>
+{% if registered %}
+		<strong>thank you for registering!</strong>
+        <a href="/photo/">Return to the homepage.</a><br />
+{% else %}
+<div class="container">
+
+	<div class="content_fullwidth">
+    
+		
+        <div class="reg_form">
+        <form id="sky-form" class="sky-form" method="post" action="/photo/register/">{% csrf_token %}
+				<header>Registration form</header>
+				
+				<fieldset>					
+					
+					<section>
+						<label class="input">
+							<i class="icon-append icon-envelope-alt"></i>
+							<input type="email" name="email" placeholder="Email address">
+							<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+						</label>
+					</section>
+					
+					<section>
+						<label class="input">
+							<i class="icon-append icon-lock"></i>
+							<input type="password" name="password" placeholder="Password" id="password">
+							<b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+						</label>
+					</section>
+					
+					<section>
+						<label class="input">
+							<i class="icon-append icon-lock"></i>
+							<input type="password" name="passwordConfirm" placeholder="Confirm password">
+							<b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+						</label>
+					</section>
+				</fieldset>
+					
+				<fieldset>
+					<div class="row">
+						<section class="col col-6">
+							<label class="input">
+								<input type="text" name="first_name" placeholder="First name">
+							</label>
+						</section>
+						<section class="col col-6">
+							<label class="input">
+								<input type="text" name="last_name" placeholder="Last name">
+							</label>
+						</section>
+					</div>
+					
+					<section>
+						<label class="select">
+							<select name="gender">
+								<option value="0" selected disabled>Gender</option>
+								<option value="1">Male</option>
+								<option value="2">Female</option>
+								<option value="3">Other</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+					
+					<section>
+						<label class="input">
+							<i class="icon-append icon-lock"></i>
+							<input type="text" name="date_of_birth" id="datepicker" placeholder="yyyy-mm-dd">
+							<b class="tooltip tooltip-bottom-right">We won't forget your Birthday</b>
+						</label>
+					</section>
+
+					<section>
+						<label class="checkbox"><input type="checkbox" name="subscription" id="subscription"><i></i>I want to receive news and  special offers</label>
+						<label class="checkbox"><input type="checkbox" name="terms" id="terms"><i></i>I agree with the Terms and Conditions</label>
+					</section>
+				</fieldset>
+				<footer>
+					<button type="submit" class="button">Submit</button>
+				</footer>
+			</form>			
+		</div>
+        
+	</div>
+
+</div><!-- end content area -->
+
+{% endif %}
+    
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery from the google apis -->
+<!-- <script type="text/javascript" src="js/universal/jquery.js"></script>
+ -->
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script src="{% static 'photo/js/form/jquery.form.min.js' %}"></script>
+<script src="{% static 'photo/js/form/jquery.validate.min.js' %}"></script>
+<script src="{% static 'photo/js/form/jquery.modal.js' %}"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+		$( "#datepicker" ).datepicker({
+       dateFormat: "yy-mm-dd"
+   });
+      
+   //Here I get the format
+   var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
+    
+         //Here I set it
+   $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	
+	});     
+
+(function($) {
+ "use strict";
+
+
+
+	$(function()
+	{
+		// Validation		
+		$("#sky-form").validate(
+		{					
+			// Rules for form validation
+			rules:
+			{
+				username:
+				{
+					required: true
+				},
+				email:
+				{
+					required: true,
+					email: true
+				},
+				password:
+				{
+					required: true,
+					minlength: 3,
+					maxlength: 20
+				},
+				passwordConfirm:
+				{
+					required: true,
+					minlength: 3,
+					maxlength: 20,
+					equalTo: '#password'
+				},
+				firstname:
+				{
+					required: true
+				},
+				lastname:
+				{
+					required: true
+				},
+				gender:
+				{
+					required: true
+				},
+				terms:
+				{
+					required: true
+				}
+			},
+			
+			// Messages for form validation
+			messages:
+			{
+				login:
+				{
+					required: 'Please enter your login'
+				},
+				email:
+				{
+					required: 'Please enter your email address',
+					email: 'Please enter a VALID email address'
+				},
+				password:
+				{
+					required: 'Please enter your password'
+				},
+				passwordConfirm:
+				{
+					required: 'Please enter your password one more time',
+					equalTo: 'Please enter the same password as above'
+				},
+				firstname:
+				{
+					required: 'Please select your first name'
+				},
+				lastname:
+				{
+					required: 'Please select your last name'
+				},
+				gender:
+				{
+					required: 'Please select your gender'
+				},
+				terms:
+				{
+					required: 'You must agree with Terms and Conditions'
+				}
+			},					
+			
+			// Do not change code below
+			errorPlacement: function(error, element)
+			{
+				error.insertAfter(element.parent());
+			}
+		});
+	});			
+
+})(jQuery);
+
+</script>
+
+
+</body>
+</html>

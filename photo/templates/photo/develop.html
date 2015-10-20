@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+	
+   {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'photo/css_login/reset.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'photo/css_login/style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    
+    <link rel="stylesheet" href="{% static 'photo/js/progressbar/ui.progress-bar.css' %}">
+    <style type="text/css">
+        #back{
+            position: fixed;
+            left: 2%;
+            top: 4%;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="clearfix margin_top2"></div>
+    <div class="clearfix margin_top2"></div>
+<div class="clearfix margin_top2"></div>
+<div id="back">
+<a class="pure-button"  href="{% url 'index' %}" >Back</a></div>
+
+    <div class="features_sec42 two">
+    <div class="container">
+    
+        <h3 class="ipages_title1">Meet Our <strong>Team</strong></h3>
+        <br />
+        
+        <div class="one_fourth animate" data-anim-type="fadeInUp">
+        <div class="box">
+            
+            <img src="http://placehold.it/270x245" alt="" />
+            
+            <h5>Jay Bhatt</h5>
+            <h6>Developer</h6>
+            
+            <p>Lorem ipsum dolor amet, consectetue Radipiscing elit et Suspendisse et justo. mattis commodo augue.</p>
+            
+        </div>
+        </div><!-- end section -->
+        
+        <div class="one_fourth animate" data-anim-type="fadeInUp" data-anim-delay="200">
+        <div class="box">
+            
+            <img src="http://placehold.it/270x245" alt="" />
+            
+            <h5>Faizaan Charania</h5>
+            <h6>Developer</h6>
+            
+            <p>Lorem ipsum dolor amet, consectetue Radipiscing elit et Suspendisse et justo. mattis commodo augue.</p>
+            
+        </div>
+        </div><!-- end section -->
+        
+        <div class="one_fourth animate" data-anim-type="fadeInUp" data-anim-delay="400">
+        <div class="box">
+            
+            <img src="http://placehold.it/270x245" alt="" />
+            
+            <h5>Shriprasad Bhamare</h5>
+            <h6>Developer</h6>
+            
+            <p>Lorem ipsum dolor amet, consectetue Radipiscing elit et Suspendisse et justo. mattis commodo augue.</p>
+            
+        </div>
+        </div><!-- end section -->
+        
+     
+        
+    </div>
+    </div><!-- end team section -->
+    
+    
+    
+</body>
+</html>

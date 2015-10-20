@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>slick example</title>
+
+	{% load staticfiles %}
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/slick/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'photo/slick/slick-theme.css' %}"/>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<style type="text/css">
+	body{
+		margin: 0px;
+	}
+	.container {
+		margin: 0px;
+    	-webkit-transition: background-color 2s /* Safari */
+    	transition: background-color 2s;
+	}
+	.slideshow{
+		width: 80%;
+		left:10%;
+	}
+	.slides{
+		margin: 10px;
+		width: 100%;
+		height: auto;
+	}
+	.black{
+		background-color: black;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div align = "center">
+			<button id="start" class="pure-button">Slide show</button>
+			<button id="end" class="pure-button">End</button>
+			<a id="surprise" href ="{% url 'photo_booth_strips' %}" class="pure-button">Surprise</a>
+		</div>
+		<div class="slideshow">
+			{% for photo in photo_list %}
+				<div><img class="slides" src="{{ photo.image.url }}"></div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="{% static 'photo/slick/slick.min.js' %}"></script>
+
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$('.slideshow').fadeOut();
+		});
+
+		$("#start").click(function(){
+   			$(".slideshow").fadeIn();
+			$(".container").addClass("black");	
+			$('.slideshow').slick({
+    			dots: false,
+				infinite: true,
+				speed: 1000,
+				fade: true,
+				arrows:false,
+				cssEase: 'ease',
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 2000,
+	  		});
+		});
+
+		$("#end").click(function(){
+			$(".container").removeClass("black");
+			$(".slideshow").fadeOut();
+			$('.slideshow').slick('unslick');
+		});
+
+	</script>
+
+</body>
+</html>

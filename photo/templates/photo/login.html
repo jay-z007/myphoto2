@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+
+	<!-- Favicon --> 
+	<link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
+    {% load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'photo/css_login/form_style.css' %}" />
+	<link rel="stylesheet" href="{% static 'photo/font-awesome/css/font-awesome.min.css' %}">
+
+</head>
+<body>
+<div class="login_form">
+	<form id="sky-form" class="sky-form" method="POST" action="/photo/login/">
+		{% csrf_token %}
+		<header>Login form</header>
+
+				<fieldset>
+					<section>
+						<div class="row">
+							<label class="label col col-4">E-mail</label>
+							<div class="col col-8">
+								<label class="input">
+									<i class="icon-append icon-user"></i>
+									<input type="email" name="email">
+								</label>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="row">
+							<label class="label col col-4">Password</label>
+							<div class="col col-8">
+								<label class="input">
+									<i class="icon-append icon-lock"></i>
+									<input type="password" name="password">
+								</label>
+								<div class="note"><a href="{% url 'forgot_password' %}" class="modal-opener">Forgot password?</a></div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<div class="row">
+							<div class="col col-4"></div>
+							<div class="col col-8">
+								<label class="checkbox"><input type="checkbox" name="remember" checked><i></i>Keep me logged in</label>
+							</div>
+						</div>
+					</section>
+				</fieldset>
+				<footer>
+					<div class="fright">
+                    <a href="{% url 'register' %}" class="button button-secondary">Register</a>
+                    <button type="submit" class="button">Log in</button>
+                    </div>
+                    {{message}}
+				</footer>
+				<input type="hidden" name="next" value="{{ next|escape }}" />
+			</form>
+		</div>
+		<script type="text/javascript" src="{% static 'photo/js/universal/jquery.js' %}"></script>
+		<script src="{% static 'photo/js/form/jquery.form.min.js' %}"></script>
+		<script src="{% static 'photo/js/form/jquery.modal.js' %}"></script>
+</body>
+</html>
